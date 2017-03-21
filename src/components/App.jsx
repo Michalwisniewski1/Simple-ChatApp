@@ -26,35 +26,37 @@ document.addEventListener('DOMContentLoaded', function() {
         constructor(props) {
             super(props);
             this.state = {
-                messages: '',
                 login: false,
                 name: '',
                 email: '',
                 photoUrl: '',
                 uid: '',
                 text: '',
-                date: '',
-                id: ''
+                date: ''
             };
         }
 
         componentDidMount() {
-            firebase.database().ref('/messages').on('value', (dataSnapshot) => {
-                const messagesVal = dataSnapshot.val();
 
-                const messages = _(messagesVal). //use lodash to wrap an item immediately
-                keys(). //take all keys inside the objext
-                map((messageKey) => { //take all items in object
-                    var cloned = _.clone(messagesVal[messageKey]); //clone each object in the array
-                    cloned.key = messageKey; //set unique key to objects
-                    return cloned;
-                }).value(); //call value function to tell it to start evaluatin the chain
+          let myArray = [];
+
+            firebase.database().ref('/messages').on('child_added', (snapshot, prevChildKey) => {
+                const messages = snapshot.val();
                 console.log(messages);
-                if (messagesVal != null) {
-                this.setState({messages: messages})
+                //console.log(prevChildKey);
+                myArray.push(messages);
+
+                if (messages[prevChildKey] != null) {
+                    return;
                 }
+                messages[prevChildKey] = messages;
+                this.setState({messages: myArray});
             });
 
+            // firebase.database().ref('/messages').on('child_removed', (snapshot, prevChildKey) => {
+            //     delete messages[prevChildKey];
+            //     this.setState({messages: messages});
+            // });
         }
         sendMessage = (data) => {
             var user = firebase.auth().currentUser;
@@ -73,8 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     photoUrl: user.photoURL,
                     uid: user.uid,
                     text: data.text,
-                    date: new Date().toUTCString(),
-                    id: user.key
+                    date: new Date().toUTCString()
                 });
 
             }
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 width: '100%',
                                 margin: '30px auto 30px'
                             }}>
-                                <MessageList valueMessage={this.state.messages}/>
+                            <MessageList valueMessage={this.state.messages}/>
                             </div>
 
                             <MessageBox sendMessage={this.sendMessage}/>

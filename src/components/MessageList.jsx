@@ -12,7 +12,7 @@ class MessageList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: []
+            messages: this.props.valueMessage
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -20,23 +20,23 @@ class MessageList extends React.Component {
     }
 
     render() {
+      console.log(this.state.messages);
         var messageNodes = this.state.messages.map((message) => {
             return (
-              <div>
-                <Message message ={message.text} user={message.name} photoUrl={message.photoUrl}>
-                </Message>
-              </div>
+                <div>
+                    <Message message ={message.message} user={message.name} photoUrl={message.photoUrl}></Message>
+                </div>
             );
-            });
+        });
 
         return (
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Card style={{
-                        width: '1200px',
+                        width: '1200px'
                     }}>
                         <List>
-                          {messageNodes}
+                            {messageNodes}
                         </List>
                     </Card>
                 </MuiThemeProvider>
