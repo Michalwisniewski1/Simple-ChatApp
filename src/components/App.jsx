@@ -32,13 +32,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 email: '',
                 photoUrl: '',
                 uid: '',
-                text: ''
+                text: '',
+                date: '',
+                id: ''
             };
         }
 
         componentDidMount() {
             firebase.database().ref('/messages').on('value', (dataSnapshot) => {
                 const messagesVal = dataSnapshot.val();
+
                 const messages = _(messagesVal). //use lodash to wrap an item immediately
                 keys(). //take all keys inside the objext
                 map((messageKey) => { //take all items in object
@@ -47,8 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     return cloned;
                 }).value(); //call value function to tell it to start evaluatin the chain
                 console.log(messages);
+                if (messagesVal != null) {
                 this.setState({messages: messages})
+                }
             });
+
         }
         sendMessage = (data) => {
             var user = firebase.auth().currentUser;
@@ -62,11 +68,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 var newMessageRef = messageListRef.push();
                 newMessageRef.set({name: user.displayName, email: user.email, photoUrl: user.photoURL, uid: user.uid, text: data.text});
                 this.setState({
-                  name: user.displayName, email: user.email, photoUrl: user.photoURL, uid: user.uid, text: data.text
+                    name: user.displayName,
+                    email: user.email,
+                    photoUrl: user.photoURL,
+                    uid: user.uid,
+                    text: data.text,
+                    date: new Date().toUTCString(),
+                    id: user.key
                 });
 
             }
         }
+
         updateState = () => {
             this.setState({login: true})
         }
@@ -90,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }}>
                                 <MessageList valueMessage={this.state.messages}/>
                             </div>
-                            
+
                             <MessageBox sendMessage={this.sendMessage}/>
                         </div>
                     </MuiThemeProvider>

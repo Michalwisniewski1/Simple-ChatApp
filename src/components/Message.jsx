@@ -19,7 +19,12 @@ class Message extends React.Component {
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                 <List>
                     <ListItem style = {{width: '100%'}} disabled={true}><Avatar src={this.props.photoUrl} />
-                        {this.props.message}
+                        <div>
+                            {this.props.message}
+                          </div>
+                        <div>
+                          {this.props.user}
+                        </div>
                     </ListItem>
                 </List>
             </MuiThemeProvider>

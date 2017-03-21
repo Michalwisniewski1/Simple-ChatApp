@@ -20,9 +20,14 @@ class MessageList extends React.Component {
     }
 
     render() {
-        var messageNodes = this.state.messages.map((message, name) => {
-            return (<Message message={message.text}/>);
-        });
+        var messageNodes = this.state.messages.map((message) => {
+            return (
+              <div>
+                <Message message ={message.text} user={message.name} photoUrl={message.photoUrl}>
+                </Message>
+              </div>
+            );
+            });
 
         return (
             <div>
