@@ -7,20 +7,21 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ListItem from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import List from 'material-ui/List';
-
+import FileFolder from 'material-ui/svg-icons/file/folder';
+import Login from './Login.jsx';
 class Message extends React.Component {
     constructor(props) {
         super(props);
-    }
 
+    }
     render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-              <List>
-                <ListItem disabled={true} leftAvatar={<Avatar src="http://ulubionykolor.pl/images/normal/14032013/7e0d11cfbc4b4b870ed9e990614032013124851.jpg" />}>
-                    {this.props.message}
-                </ListItem>
-              </List>
+                <List>
+                    <ListItem style = {{width: '100%'}} disabled={true}><Avatar src={this.props.photoUrl} />
+                        {this.props.message}
+                    </ListItem>
+                </List>
             </MuiThemeProvider>
         );
     }

@@ -8,8 +8,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Card from 'material-ui/Card';
 import List from 'material-ui/List';
 
-
-
 class MessageList extends React.Component {
     constructor(props) {
         super(props);
@@ -18,13 +16,11 @@ class MessageList extends React.Component {
         };
     }
     componentWillReceiveProps(nextProps) {
-      this.setState({
-        messages: nextProps.valueMessage
-      });
+        this.setState({messages: nextProps.valueMessage});
     }
 
     render() {
-        var messageNodes = this.state.messages.map((message) => {
+        var messageNodes = this.state.messages.map((message, name) => {
             return (<Message message={message.text}/>);
         });
 
@@ -32,11 +28,10 @@ class MessageList extends React.Component {
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Card style={{
-                        flexGrow: 2,
-                        marginLeft: 30
+                        width: '1200px',
                     }}>
                         <List>
-                            {messageNodes}
+                          {messageNodes}
                         </List>
                     </Card>
                 </MuiThemeProvider>

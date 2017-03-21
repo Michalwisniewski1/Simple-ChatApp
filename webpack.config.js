@@ -30,7 +30,8 @@ watch: true,
 
         // Options to configure babel with
         query: {
-          presets: ['es2015', 'stage-2', 'react']
+          presets: ['es2015', 'stage-2', 'react'],
+          plugins: ['transform-decorators-legacy']
         }
       },
       {

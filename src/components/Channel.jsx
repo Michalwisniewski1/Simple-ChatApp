@@ -13,7 +13,9 @@ class Channel extends React.Component {
 
     render() {
         return (
-          <ListItem>{this.props.channel}</ListItem>
+          <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+            <ListItem>{this.props.channel}</ListItem>
+            </MuiThemeProvider>
         );
     }
 }

@@ -25,7 +25,6 @@ class MessageBox extends React.Component {
     onKeyUp(evt) {
         if (evt.keyCode === 13 && trim(evt.target.value) != '') {
             evt.preventDefault();
-
             this.props.sendMessage({
               text: evt.target.value
             });
@@ -35,6 +34,7 @@ class MessageBox extends React.Component {
 
     render() {
         return (
+          <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
             <Card style={{
                 maxWidth: 1200,
                 margin: '30px auto',
@@ -51,6 +51,7 @@ class MessageBox extends React.Component {
                     outline: 'auto 0px'
                 }}/>
             </Card>
+          </MuiThemeProvider>
         );
     }
 }
