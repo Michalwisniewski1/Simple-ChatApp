@@ -40,7 +40,7 @@ class MessageBox extends React.Component {
                 margin: '30px auto',
                 padding: 30
             }}>
-                <textarea value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)} style={{
+                <input value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)} style={{
                     width: '100%',
                     borderColor: '#D0D0D0',
                     resize: 'none',

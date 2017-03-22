@@ -12,7 +12,7 @@ class MessageList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: this.props.valueMessage
+            messages: []
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -20,11 +20,11 @@ class MessageList extends React.Component {
     }
 
     render() {
-      console.log(this.state.messages);
-        var messageNodes = this.state.messages.map((message) => {
+        console.log(this.state.messages);
+        const messageNodes = (this.state.messages).map((message, index) => {
             return (
                 <div>
-                    <Message message ={message.message} user={message.name} photoUrl={message.photoUrl}></Message>
+                    <Message message={message.text} user={message.name} photoUrl={message.photoUrl} key={message.key}></Message>
                 </div>
             );
         });

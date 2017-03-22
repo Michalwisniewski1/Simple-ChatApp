@@ -4,6 +4,7 @@ import MessageList from './MessageList.jsx';
 import MessageBox from './MessageBox.jsx';
 import Login from './Login.jsx';
 require('./main.scss');
+import reactfire from 'reactfire';
 
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -36,85 +37,88 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         }
 
-        componentDidMount() {
-
-          let myArray = [];
-
-            firebase.database().ref('/messages').on('child_added', (snapshot, prevChildKey) => {
+        componentWillMount() {
+            const ref = firebase.database().ref("/messages/");
+            ref.limitToLast(10).on('child_added', (snapshot) => {
                 const messages = snapshot.val();
+                let data = [];
+                data.push(messages);
                 console.log(messages);
-                //console.log(prevChildKey);
-                myArray.push(messages);
 
-                if (messages[prevChildKey] != null) {
-                    return;
+                if (messages != null) {
+                    this.setState({messages: data});
                 }
-                messages[prevChildKey] = messages;
-                this.setState({messages: myArray});
+
             });
-
-            // firebase.database().ref('/messages').on('child_removed', (snapshot, prevChildKey) => {
-            //     delete messages[prevChildKey];
-            //     this.setState({messages: messages});
-            // });
         }
-        sendMessage = (data) => {
-            var user = firebase.auth().currentUser;
-            var name,
-                email,
-                photoUrl,
-                uid,
-                emailVerified;
-            if (user != null) {
-                var messageListRef = firebase.database().ref('/messages');
-                var newMessageRef = messageListRef.push();
-                newMessageRef.set({name: user.displayName, email: user.email, photoUrl: user.photoURL, uid: user.uid, text: data.text});
-                this.setState({
-                    name: user.displayName,
-                    email: user.email,
-                    photoUrl: user.photoURL,
-                    uid: user.uid,
-                    text: data.text,
-                    date: new Date().toUTCString()
-                });
+        //     const messages = [];
+        //     dataSnapshot.forEach(function(childSnapshot) {
+        //         const messages = childSnapshot.val();
+        //         messages['.key'] = childSnapshot.key;
+        //         messages.push(messages);
+        //     }.bind(this));
+        //     this.setState({messages: messages});
+        // }.bind(this));
+//     });
+// }
 
-            }
-        }
+sendMessage = (data) => {
+    var user = firebase.auth().currentUser;
+    var name,
+        email,
+        photoUrl,
+        uid,
+        emailVerified;
+    if (user != null) {
+        var messageListRef = firebase.database().ref('/messages/');
+        var newMessageRef = messageListRef.push();
+        newMessageRef.set({name: user.displayName, email: user.email, photoUrl: user.photoURL, uid: user.uid, text: data.text});
+        // this.setState({
+        //     name: user.displayName,
+        //     email: user.email,
+        //     photoUrl: user.photoURL,
+        //     uid: user.uid,
+        //     text: data.text,
+        //     date: new Date().toUTCString()
+        // });
 
-        updateState = () => {
-            this.setState({login: true})
-        }
+    }
+}
 
-        render() {
+updateState = () => {
+    this.setState({login: true})
+}
 
-            if (this.state.login === false) {
-                return (<Login updateState={this.updateState}/>)
+render() {
 
-            } else {
-                return (
-                    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                        <div>
-                            <AppBar title="Awesome Chat App"/>
-                            <div style={{
-                                display: 'flex',
-                                flexFlow: 'row wrap',
-                                maxWidth: 1200,
-                                width: '100%',
-                                margin: '30px auto 30px'
-                            }}>
-                            <MessageList valueMessage={this.state.messages}/>
-                            </div>
+    if (this.state.login === false) {
+        return (<Login updateState={this.updateState}/>)
 
-                            <MessageBox sendMessage={this.sendMessage}/>
-                        </div>
-                    </MuiThemeProvider>
-                );
+    } else {
+        return (
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                <div>
+                    <AppBar title="Awesome Chat App"/>
+                    <div style={{
+                        display: 'flex',
+                        flexFlow: 'row wrap',
+                        maxWidth: 1200,
+                        width: '100%',
+                        margin: '30px auto 30px'
+                    }}>
+                        <MessageList valueMessage={this.state.messages}/>
+                    </div>
 
-            }
+                    <MessageBox sendMessage={this.sendMessage}/>
+                </div>
+            </MuiThemeProvider>
+        );
 
-        }
     }
 
-    ReactDOM.render(
-        <App/>, document.getElementById('app'));
+}
+}
+
+ReactDOM.render(
+    <App/>, document.getElementById('app'));
 });
