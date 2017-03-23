@@ -9,9 +9,14 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: ''
+        };
+    }
 
     onClick() {
-        console.log(this.props);
 
         var auth = firebase.auth();
 
@@ -19,17 +24,23 @@ class Login extends React.Component {
         auth.signInWithPopup(provider).then((result) => {
             // User signed in!
             event.preventDefault();
-            console.log('Udało się zalogować!');
             var token = result.credential.accessToken;
             var user = result.user;
             const name = user.displayName;
+            const photo = result.user.photoURL;
+            console.log(result);
+            this.setState({name: name});
             this.props.updateState();
-            alert('Witaj ' + name);
+            alert('Witaj ' + this.state.name);
         }).catch(function(error) {
             console.log(error);
             var errorMessage = error.message
             console.log(errorMessage);
         });
+    }
+
+    getUserData() {
+        var user = firebase.auth().currentUser;
     }
 
     render() {

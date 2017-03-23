@@ -7,6 +7,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Card from 'material-ui/Card';
 import trim from 'trim';
 import * as firebase from 'firebase';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
 
 class MessageBox extends React.Component {
@@ -15,7 +17,6 @@ class MessageBox extends React.Component {
         this.state = {
             message: ''
         }
-
     }
 
     onChange(evt) {
@@ -40,16 +41,15 @@ class MessageBox extends React.Component {
                 margin: '30px auto',
                 padding: 30
             }}>
-                <input value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)} style={{
-                    width: '100%',
-                    borderColor: '#D0D0D0',
-                    resize: 'none',
-                    borderRadius: 3,
-                    minHeight: 50,
-                    color: '#555',
-                    fontSize: 14,
-                    outline: 'auto 0px'
-                }}/>
+              <TextField
+                fullWidth={true}
+                hintText="Message Field"
+                floatingLabelText="Write your message"
+                rows={2}
+                value={this.state.message}
+                onChange={this.onChange.bind(this)}
+                onKeyUp={this.onKeyUp.bind(this)}
+                ></TextField>
             </Card>
           </MuiThemeProvider>
         );
