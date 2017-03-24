@@ -12,11 +12,14 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            name: '',
+            photo: '',
+            messages: [],
+            userId:''
         };
     }
 
-    onClick() {
+    onClick = () => {
 
         var auth = firebase.auth();
 
@@ -26,11 +29,14 @@ class Login extends React.Component {
             event.preventDefault();
             var token = result.credential.accessToken;
             var user = result.user;
+            const userId = user.uid;
             const name = user.displayName;
             const photo = result.user.photoURL;
-            console.log(result);
-            this.setState({name: name});
+            console.log(userId);
+            this.setState({name: name, photo: photo, userId: userId});
             this.props.updateState();
+            this.props.getUserData(name, photo, userId);
+            this.props.getDatabase();
             alert('Witaj ' + this.state.name);
         }).catch(function(error) {
             console.log(error);
@@ -39,46 +45,44 @@ class Login extends React.Component {
         });
     }
 
-    getUserData() {
-        var user = firebase.auth().currentUser;
-    }
-
     render() {
-        return (
-            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                <Card style={{
-                    'maxWidth': '800px',
-                    'margin': '30px auto',
-                    'padding': '50px'
-                }}>
-                    <CardText style={{
-                        'textAlign': 'center'
+
+            return (
+                <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                    <Card style={{
+                        'maxWidth': '800px',
+                        'margin': '30px auto',
+                        'padding': '50px'
                     }}>
-                        To start chatting away, please login with your Google Account!.
-                    </CardText>
+                        <CardText style={{
+                            'textAlign': 'center'
+                        }}>
+                            To start chatting away, please login with your Google Account!.
+                        </CardText>
 
-                    <RaisedButton style={{
-                        display: 'block'
-                    }} onClick={this.onClick.bind(this)} label="Log in with Google" primary={true}/>
-                </Card>
-            </MuiThemeProvider>
-        );
-        // } else {
-        //     return (
-        //         <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        //             <CardText style={{
-        //                 'textAlign': 'center',
-        //                 'margin': '30px auto',
-        //                 'padding': '50px'
-        //             }}>
-        //                 <RaisedButton style={{
-        //                     display: 'block'
-        //                 }} onClick={this.moveToApp} label={'Welcome'} primary={true}/>
-        //             </CardText>
-        //         </MuiThemeProvider>
-        //     );
+                        <RaisedButton style={{
+                            display: 'block'
+                        }} onClick={this.onClick.bind(this)} label="Log in with Google" primary={true}/>
+                    </Card>
+                </MuiThemeProvider>
+            );
 
+            // } else {
+            //     return (
+            //         <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+            //             <CardText style={{
+            //                 'textAlign': 'center',
+            //                 'margin': '30px auto',
+            //                 'padding': '50px'
+            //             }}>
+            //                 <RaisedButton style={{
+            //                     display: 'block'
+            //                 }} onClick={this.moveToApp} label={'Welcome'} primary={true}/>
+            //             </CardText>
+            //         </MuiThemeProvider>
+            //     );
+
+        }
     }
-}
 
 export default Login;

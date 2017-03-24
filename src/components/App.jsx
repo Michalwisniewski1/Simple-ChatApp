@@ -10,6 +10,16 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import * as firebase from 'firebase';
+import Avatar from 'material-ui/Avatar';
+import Chip from 'material-ui/Chip';
+import {
+    Router,
+    Route,
+    Link,
+    IndexLink,
+    IndexRoute,
+    hashHistory
+} from 'react-router';
 
 var config = {
     apiKey: "AIzaSyC1k2h6iwLCFv5bEKUDr2U5eecM0FYccBs",
@@ -26,74 +36,39 @@ document.addEventListener('DOMContentLoaded', function() {
         constructor(props) {
             super(props);
             this.state = {
+                messages: [],
                 login: false,
                 name: '',
                 email: '',
-                photoUrl: '',
+                photo: '',
                 uid: '',
                 text: '',
-                date: ''
+                date: '',
+                userId: ''
             };
 
         }
 
-        componentWillMount() {
-            let user = firebase.auth().currentUser;
-            if (this.state.login == false) {
-                this.ref = firebase.database().ref("messages");
-                this.ref.limitToLast(10).on('value', (snapshot) => {
-                    console.log(snapshot, "snapshot");
-                    const messages = snapshot.val();
-                    const infos = snapshot.val();
-                    // let data = [];
-                    //data.push(messages);
-                    console.log(infos);
-
-                    var data = Object.values(messages);
-                    var infosData = Object.values(infos);
-
-                    if (messages != null) {
-                        this.setState({messages: data, infos: data});
-                    }
-
-                });
-            }
+        getUserData = (name, photo, userId) => {
+            this.setState({name: name, photo: photo, userId: userId});
         }
-        //
-        // this.ref.on('child_removed', (snapshot) =>  {
-        //   console.log(snapshot);
-        // })
 
-        // const ref = firebase.database().ref("/messages/");
-        // ref.limitToLast(10).on('child_added', (snapshot) => {
-        //     const messages = snapshot.val();
-        //     let data = [];
-        //     data.push(messages);
-        //     console.log(messages);
-        //
-        //     if (messages != null) {
-        //         this.setState({messages: data});
-        //     }
-        // });
+        getDatabase = (messages) => {
+            let user = firebase.auth().currentUser;
+            this.ref = firebase.database().ref("messages");
+            this.ref.limitToLast(10).on('value', (snapshot) => {
+                console.log(snapshot, "snapshot");
+                const messages = snapshot.val();
+                // let data = [];
+                //data.push(messages);
+                console.log(messages);
+                var data = Object.values(messages);
+                if (messages != null) {
+                    this.setState({messages: data});
+                }
 
-        // ref.on('child_removed', (oldChildSnapshot) => {
-        //     const Deletedmessages = oldChildSnapshot.val();
-        //     console.log(messages);
-        //     delete Deletedmessages[oldChildSnapshot];
-        //     this.setState({messages: Deletedmessages})
-        //
-        // });
-
-        //     const messages = [];
-        //     dataSnapshot.forEach(function(childSnapshot) {
-        //         const messages = childSnapshot.val();
-        //         messages['.key'] = childSnapshot.key;
-        //         messages.push(messages);
-        //     }.bind(this));
-        //     this.setState({messages: messages});
-        // }.bind(this));
-        //     });
-        // }
+            });
+        }
 
         sendMessage = (data) => {
             let user = firebase.auth().currentUser;
@@ -133,14 +108,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         render() {
 
-            if (this.state.login === false) {
-                return (<Login updateState={this.updateState}/>)
+            if (this.state.login == false) {
+                return (<Login getDatabase={this.getDatabase} getUserData={this.getUserData} updateState={this.updateState}/>)
 
             } else {
                 return (
                     <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                         <div>
-                            <AppBar title={"Logged as "+ this.props.name} showMenuIconButton={false} iconElementRight={this.props.photo}/>
+                            <AppBar title='Simple Chat App' showMenuIconButton={false}>
+                                <Chip backgroundColor={'#303030'} style={{
+                                    height: '32px',
+                                    marginTop: '15px'
+                                }}><Avatar src={this.state.photo}/>
+                                    Logged as {this.state.name}
+                                </Chip>
+                            </AppBar>
                             <div style={{
                                 display: 'flex',
                                 flexFlow: 'row wrap',
@@ -148,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 width: '100%',
                                 margin: '30px auto 30px'
                             }}>
-                                <MessageList valueMessage={this.state.messages}/>
+                                <MessageList userIdInfo={this.state.userId} valueMessage={this.state.messages}/>
                             </div>
                             <MessageBox sendMessage={this.sendMessage}/>
                         </div>
@@ -161,5 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     ReactDOM.render(
+
         <App/>, document.getElementById('app'));
 });

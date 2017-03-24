@@ -24,14 +24,18 @@ class MessageList extends React.Component {
 
     render() {
 
-        console.log(this.state.messages);
+        // if(this.props.login == true){
         const messageNodes = (this.state.messages).map((message, index) => {
             return (
 
-                <Message message={message.text} user={message.name} photoUrl={message.photoUrl} key={index}></Message>
+                <Message message={message.text} user={message.name} userId={message.uid} userIdInfo={this.props.userIdInfo} photoUrl={message.photoUrl} key={index}></Message>
 
             );
         });
+      // }else{
+        // return  <Message></Message>
+
+      // }
         return (
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>

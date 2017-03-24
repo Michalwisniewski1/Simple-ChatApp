@@ -29,6 +29,9 @@ class MessageBox extends React.Component {
             this.props.sendMessage({
               text: evt.target.value
             });
+            this.setState({
+              message: ''
+            });
 
         }
     }
