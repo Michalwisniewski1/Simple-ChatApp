@@ -15,7 +15,7 @@ class Login extends React.Component {
             name: '',
             photo: '',
             messages: [],
-            userId:''
+            userId: ''
         };
     }
 
@@ -47,42 +47,26 @@ class Login extends React.Component {
 
     render() {
 
-            return (
-                <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                    <Card style={{
-                        'maxWidth': '800px',
-                        'margin': '30px auto',
-                        'padding': '50px'
+        return (
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                <Card style={{
+                    'maxWidth': '800px',
+                    'margin': '30px auto',
+                    'padding': '50px'
+                }}>
+                    <CardText style={{
+                        'textAlign': 'center'
                     }}>
-                        <CardText style={{
-                            'textAlign': 'center'
-                        }}>
-                            To start chatting away, please login with your Google Account!.
-                        </CardText>
+                        To start chatting away, please login with your Google Account!.
+                    </CardText>
 
-                        <RaisedButton style={{
-                            display: 'block'
-                        }} onClick={this.onClick.bind(this)} label="Log in with Google" primary={true}/>
-                    </Card>
-                </MuiThemeProvider>
-            );
-
-            // } else {
-            //     return (
-            //         <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-            //             <CardText style={{
-            //                 'textAlign': 'center',
-            //                 'margin': '30px auto',
-            //                 'padding': '50px'
-            //             }}>
-            //                 <RaisedButton style={{
-            //                     display: 'block'
-            //                 }} onClick={this.moveToApp} label={'Welcome'} primary={true}/>
-            //             </CardText>
-            //         </MuiThemeProvider>
-            //     );
-
-        }
+                    <RaisedButton style={{
+                        display: 'block'
+                    }} onClick={this.onClick.bind(this)} label="Log in with Google" primary={true}/>
+                </Card>
+            </MuiThemeProvider>
+        );
     }
+}
 
 export default Login;

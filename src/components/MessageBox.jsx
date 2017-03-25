@@ -47,7 +47,7 @@ class MessageBox extends React.Component {
               <TextField
                 fullWidth={true}
                 hintText="Message Field"
-                floatingLabelText="Write your message"
+                floatingLabelText="Type your message here"
                 rows={2}
                 value={this.state.message}
                 onChange={this.onChange.bind(this)}

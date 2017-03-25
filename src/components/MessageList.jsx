@@ -16,15 +16,11 @@ class MessageList extends React.Component {
         };
     }
 
-
     componentWillReceiveProps(nextProps) {
         this.setState({messages: nextProps.valueMessage});
     }
 
-
     render() {
-
-        // if(this.props.login == true){
         const messageNodes = (this.state.messages).map((message, index) => {
             return (
 
@@ -32,17 +28,15 @@ class MessageList extends React.Component {
 
             );
         });
-      // }else{
-        // return  <Message></Message>
-
-      // }
         return (
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Card style={{
-                        display: 'flex',
-                        marginLeft: 30,
-                        width: 1150
+                        display:'flex',
+                        alignItems:'center',
+                        justifyContent:'center',
+                        marginLeft:30,
+                        maxWidth:1150,
                     }}>
                         <List>
                             {messageNodes}

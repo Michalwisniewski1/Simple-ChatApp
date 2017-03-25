@@ -12,14 +12,7 @@ import AppBar from 'material-ui/AppBar';
 import * as firebase from 'firebase';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
-import {
-    Router,
-    Route,
-    Link,
-    IndexLink,
-    IndexRoute,
-    hashHistory
-} from 'react-router';
+
 
 var config = {
     apiKey: "AIzaSyC1k2h6iwLCFv5bEKUDr2U5eecM0FYccBs",
@@ -59,8 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.ref.limitToLast(10).on('value', (snapshot) => {
                 console.log(snapshot, "snapshot");
                 const messages = snapshot.val();
-                // let data = [];
-                //data.push(messages);
                 console.log(messages);
                 var data = Object.values(messages);
                 if (messages != null) {

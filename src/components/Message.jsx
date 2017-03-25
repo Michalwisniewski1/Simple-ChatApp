@@ -16,13 +16,15 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 class Message extends React.Component {
     constructor(props) {
         super(props);
+
     }
 
     render() {
+
       if (this.props.userIdInfo === this.props.userId)  {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                <List style={{width:'500px'}}>
+                <List style={{maxWidth:'500px'}}>
                   <ListItem
                     primaryText={this.props.message}
                     secondaryText={this.props.user}
@@ -35,7 +37,7 @@ class Message extends React.Component {
     }else{
       return(
         <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-            <List style={{maxWidth:'500px', backgroundColor:'#0097A7'}}>
+            <List style={{ maxWidth:'500px', backgroundColor:'#0097A7'}}>
               <ListItem
                 primaryText={this.props.message}
                 secondaryText={this.props.user}
