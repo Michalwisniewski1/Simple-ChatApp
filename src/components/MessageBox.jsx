@@ -7,6 +7,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Card from 'material-ui/Card';
 import trim from 'trim';
 import * as firebase from 'firebase';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
 
 class MessageBox extends React.Component {
@@ -15,7 +17,6 @@ class MessageBox extends React.Component {
         this.state = {
             message: ''
         }
-
     }
 
     onChange(evt) {
@@ -25,9 +26,11 @@ class MessageBox extends React.Component {
     onKeyUp(evt) {
         if (evt.keyCode === 13 && trim(evt.target.value) != '') {
             evt.preventDefault();
-
             this.props.sendMessage({
               text: evt.target.value
+            });
+            this.setState({
+              message: ''
             });
 
         }
@@ -35,22 +38,23 @@ class MessageBox extends React.Component {
 
     render() {
         return (
+          <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
             <Card style={{
                 maxWidth: 1200,
                 margin: '30px auto',
                 padding: 30
             }}>
-                <textarea value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)} style={{
-                    width: '100%',
-                    borderColor: '#D0D0D0',
-                    resize: 'none',
-                    borderRadius: 3,
-                    minHeight: 50,
-                    color: '#555',
-                    fontSize: 14,
-                    outline: 'auto 0px'
-                }}/>
+              <TextField
+                fullWidth={true}
+                hintText="Message Field"
+                floatingLabelText="Type your message here"
+                rows={2}
+                value={this.state.message}
+                onChange={this.onChange.bind(this)}
+                onKeyUp={this.onKeyUp.bind(this)}
+                ></TextField>
             </Card>
+          </MuiThemeProvider>
         );
     }
 }

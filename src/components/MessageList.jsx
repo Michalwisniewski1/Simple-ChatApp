@@ -1,39 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Message from './Message.jsx';
-import _ from 'lodash';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Card from 'material-ui/Card';
 import List from 'material-ui/List';
-
-
+import * as firebase from 'firebase';
 
 class MessageList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: []
+            messages: this.props.valueMessage
         };
     }
+
     componentWillReceiveProps(nextProps) {
-      this.setState({
-        messages: nextProps.valueMessage
-      });
+        this.setState({messages: nextProps.valueMessage});
     }
 
     render() {
-        var messageNodes = this.state.messages.map((message) => {
-            return (<Message message={message.text}/>);
-        });
+        const messageNodes = (this.state.messages).map((message, index) => {
+            return (
 
+                <Message message={message.text} user={message.name} userId={message.uid} userIdInfo={this.props.userIdInfo} photoUrl={message.photoUrl} key={index}></Message>
+
+            );
+        });
         return (
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Card style={{
-                        flexGrow: 2,
-                        marginLeft: 30
+                        display:'flex',
+                        alignItems:'center',
+                        justifyContent:'center',
+                        marginLeft:30,
+                        maxWidth:1150,
                     }}>
                         <List>
                             {messageNodes}

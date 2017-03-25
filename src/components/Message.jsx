@@ -4,26 +4,51 @@ import ReactDOM from 'react-dom';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import ListItem from 'material-ui/List';
+import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import List from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+
 
 class Message extends React.Component {
     constructor(props) {
         super(props);
+
     }
 
     render() {
+
+      if (this.props.userIdInfo === this.props.userId)  {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-              <List>
-                <ListItem disabled={true} leftAvatar={<Avatar src="http://ulubionykolor.pl/images/normal/14032013/7e0d11cfbc4b4b870ed9e990614032013124851.jpg" />}>
-                    {this.props.message}
-                </ListItem>
-              </List>
+                <List style={{maxWidth:'500px'}}>
+                  <ListItem
+                    primaryText={this.props.message}
+                    secondaryText={this.props.user}
+                    leftAvatar={<Avatar src={this.props.photoUrl}/>}
+                    rightIcon={<CommunicationChatBubble />}
+                    />
+                </List>
             </MuiThemeProvider>
         );
+    }else{
+      return(
+        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <List style={{ maxWidth:'500px', backgroundColor:'#0097A7'}}>
+              <ListItem
+                primaryText={this.props.message}
+                secondaryText={this.props.user}
+                rightAvatar={<Avatar src={this.props.photoUrl}/>}
+                leftIcon={<CommunicationChatBubble />}
+                />
+            </List>
+        </MuiThemeProvider>
+      )
     }
+  }
 }
 
 export default Message;
