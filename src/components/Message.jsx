@@ -22,9 +22,15 @@ class Message extends React.Component {
     render() {
 
       if (this.props.userIdInfo === this.props.userId)  {
+<<<<<<< HEAD
         return  (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                 <List style={{'maxWidth':'80vw', wordWrap:'break-word'}}>
+=======
+        return (
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                <List style={{maxWidth:'500px'}}>
+>>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
                   <ListItem
                     primaryText={this.props.message}
                     secondaryText={this.props.user}
@@ -34,10 +40,17 @@ class Message extends React.Component {
                 </List>
             </MuiThemeProvider>
         );
+<<<<<<< HEAD
     } else {
       return  (
         <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <List style={{ 'maxWidth':'80vw', 'backgroundColor':'#0097A7', wordWrap:'break-word'}}>
+=======
+    }else{
+      return(
+        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <List style={{ maxWidth:'500px', backgroundColor:'#0097A7'}}>
+>>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
               <ListItem
                 primaryText={this.props.message}
                 secondaryText={this.props.user}

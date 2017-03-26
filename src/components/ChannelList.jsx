@@ -19,6 +19,18 @@ class ChannelList extends React.Component {
     componentWillReceiveProps(nextProps) {
         this.setState({infos: nextProps.valueInfos});
     }
+<<<<<<< HEAD
+=======
+    getUser(){
+      firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+              console.log(user);
+          } else {
+              // No user is signed in.
+          }
+      });
+    }
+>>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
 
     render() {
 
