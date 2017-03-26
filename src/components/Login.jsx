@@ -6,7 +6,6 @@ import * as firebase from 'firebase';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
 
 class Login extends React.Component {
     constructor(props) {
@@ -32,7 +31,6 @@ class Login extends React.Component {
             const userId = user.uid;
             const name = user.displayName;
             const photo = result.user.photoURL;
-            console.log(userId);
             this.setState({name: name, photo: photo, userId: userId});
             this.props.updateState();
             this.props.getUserData(name, photo, userId);

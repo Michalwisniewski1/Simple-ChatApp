@@ -4,7 +4,6 @@ import MessageList from './MessageList.jsx';
 import MessageBox from './MessageBox.jsx';
 import Login from './Login.jsx';
 require('./main.scss');
-import reactfire from 'reactfire';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -12,7 +11,6 @@ import AppBar from 'material-ui/AppBar';
 import * as firebase from 'firebase';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
-
 
 var config = {
     apiKey: "AIzaSyC1k2h6iwLCFv5bEKUDr2U5eecM0FYccBs",
@@ -50,9 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let user = firebase.auth().currentUser;
             this.ref = firebase.database().ref("messages");
             this.ref.limitToLast(10).on('value', (snapshot) => {
-                console.log(snapshot, "snapshot");
                 const messages = snapshot.val();
-                console.log(messages);
                 var data = Object.values(messages);
                 if (messages != null) {
                     this.setState({messages: data});

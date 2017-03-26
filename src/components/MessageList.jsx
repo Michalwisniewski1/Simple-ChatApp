@@ -32,11 +32,11 @@ class MessageList extends React.Component {
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Card style={{
-                        display:'flex',
-                        alignItems:'center',
-                        justifyContent:'center',
-                        marginLeft:30,
-                        maxWidth:1150,
+                        'display': 'flex',
+                        'alignItems': 'center',
+                        'justifyContent': 'center',
+                        'width': '90vw',
+                        'marginLeft': '0.7vw'
                     }}>
                         <List>
                             {messageNodes}
