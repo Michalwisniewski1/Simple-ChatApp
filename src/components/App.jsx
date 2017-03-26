@@ -4,10 +4,7 @@ import MessageList from './MessageList.jsx';
 import MessageBox from './MessageBox.jsx';
 import Login from './Login.jsx';
 require('./main.scss');
-<<<<<<< HEAD
-=======
 import reactfire from 'reactfire';
->>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -15,10 +12,7 @@ import AppBar from 'material-ui/AppBar';
 import * as firebase from 'firebase';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
-<<<<<<< HEAD
-=======
 
->>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
 
 var config = {
     apiKey: "AIzaSyC1k2h6iwLCFv5bEKUDr2U5eecM0FYccBs",
@@ -46,32 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 userId: ''
             };
 
-<<<<<<< HEAD
         }
 
         getUserData = (name, photo, userId) => {
             this.setState({name: name, photo: photo, userId: userId});
         }
 
-=======
-        }
-
-        getUserData = (name, photo, userId) => {
-            this.setState({name: name, photo: photo, userId: userId});
-        }
-
->>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
         getDatabase = (messages) => {
             let user = firebase.auth().currentUser;
             this.ref = firebase.database().ref("messages");
             this.ref.limitToLast(10).on('value', (snapshot) => {
-<<<<<<< HEAD
-                const messages = snapshot.val();
-=======
                 console.log(snapshot, "snapshot");
                 const messages = snapshot.val();
                 console.log(messages);
->>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
                 var data = Object.values(messages);
                 if (messages != null) {
                     this.setState({messages: data});
@@ -110,21 +91,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
             }
-<<<<<<< HEAD
         }
 
         updateState = () => {
             this.setState({login: true})
         }
 
-=======
-        }
-
-        updateState = () => {
-            this.setState({login: true})
-        }
-
->>>>>>> d09951b0cd40a48841a3ed745ab41cd70909e4e6
         render() {
 
             if (this.state.login == false) {
