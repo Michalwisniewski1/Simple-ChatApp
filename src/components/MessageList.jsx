@@ -35,7 +35,9 @@ class MessageList extends React.Component {
                         'alignItems': 'center',
                         'justifyContent': 'center',
                         'width': '90vw',
-                        'marginLeft': '0.7vw'
+                        'marginLeft': '0.7vw',
+                        'marginLeft': '1.7vw',
+                        'maxWidth' : '1150px'
                     }}>
                         <List>
                             {messageNodes}
