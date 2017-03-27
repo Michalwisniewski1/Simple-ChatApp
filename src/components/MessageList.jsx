@@ -6,7 +6,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Card from 'material-ui/Card';
 import List from 'material-ui/List';
-import * as firebase from 'firebase';
 
 class MessageList extends React.Component {
     constructor(props) {
@@ -32,11 +31,11 @@ class MessageList extends React.Component {
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Card style={{
-                        'display':'flex',
-                        'alignItems':'center',
-                        'justifyContent':'center',
-                        'width':'90vw',
-                        'marginLeft':'0.7vw'
+                        'display': 'flex',
+                        'alignItems': 'center',
+                        'justifyContent': 'center',
+                        'width': '90vw',
+                        'marginLeft': '0.7vw'
                     }}>
                         <List>
                             {messageNodes}

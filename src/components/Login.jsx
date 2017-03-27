@@ -32,7 +32,6 @@ class Login extends React.Component {
             const userId = user.uid;
             const name = user.displayName;
             const photo = result.user.photoURL;
-            console.log(userId);
             this.setState({name: name, photo: photo, userId: userId});
             this.props.updateState();
             this.props.getUserData(name, photo, userId);

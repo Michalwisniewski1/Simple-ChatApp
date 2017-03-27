@@ -1,0 +1,45 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'app' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.2
+4 verbose run-script [ 'preapp', 'app', 'postapp' ]
+5 info lifecycle ChatApp@1.0.0~preapp: ChatApp@1.0.0
+6 silly lifecycle ChatApp@1.0.0~preapp: no script for preapp, continuing
+7 info lifecycle ChatApp@1.0.0~app: ChatApp@1.0.0
+8 verbose lifecycle ChatApp@1.0.0~app: unsafe-perm in lifecycle true
+9 verbose lifecycle ChatApp@1.0.0~app: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/home/michal/My-first-chat-app/node_modules/.bin:/home/michal/bin:/home/michal/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle ChatApp@1.0.0~app: CWD: /home/michal/My-first-chat-app
+11 silly lifecycle ChatApp@1.0.0~app: Args: [ '-c', 'webpack-dev-server --inline --hot' ]
+12 silly lifecycle ChatApp@1.0.0~app: Returned: code: 1  signal: null
+13 info lifecycle ChatApp@1.0.0~app: Failed to exec app script
+14 verbose stack Error: ChatApp@1.0.0 app: `webpack-dev-server --inline --hot`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:279:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:194:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:194:7)
+14 verbose stack     at maybeClose (internal/child_process.js:899:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid ChatApp@1.0.0
+16 verbose cwd /home/michal/My-first-chat-app
+17 error Linux 4.8.0-41-generic
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "app"
+19 error node v7.7.2
+20 error npm  v4.1.2
+21 error code ELIFECYCLE
+22 error ChatApp@1.0.0 app: `webpack-dev-server --inline --hot`
+22 error Exit status 1
+23 error Failed at the ChatApp@1.0.0 app script 'webpack-dev-server --inline --hot'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the ChatApp package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     webpack-dev-server --inline --hot
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs ChatApp
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls ChatApp
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
