@@ -28,7 +28,6 @@ class Login extends React.Component {
         var provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider).then((result) => {
             // User signed in!
-            event.preventDefault();
             var token = result.credential.accessToken;
             var user = result.user;
             const userId = user.uid;

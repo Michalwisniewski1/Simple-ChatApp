@@ -18402,7 +18402,7 @@ exports = module.exports = __webpack_require__(237)(undefined);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  margin: 0;\n  background-color: #F9F9F9;\n  background: #37474F;\n  font-family: 'Roboto', sans-serif; }\n", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  margin: 0;\n  background-color: #F9F9F9;\n  background: #37474F;\n  font-family: 'Roboto', sans-serif; }\n\n::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n  border-radius: 10px;\n  background-color: #303030; }\n\n::-webkit-scrollbar {\n  width: 6px;\n  background-color: #303030; }\n\n::-webkit-scrollbar-thumb {\n  border-radius: 10px;\n  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n  background-color: #0097A7; }\n", ""]);
 
 // exports
 
@@ -44266,7 +44266,6 @@ var Login = function (_React$Component) {
             var provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider).then(function (result) {
                 // User signed in!
-                event.preventDefault();
                 var token = result.credential.accessToken;
                 var user = result.user;
                 var userId = user.uid;
