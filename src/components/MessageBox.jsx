@@ -8,6 +8,8 @@ import Card from 'material-ui/Card';
 import trim from 'trim';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/communication/chat';
 
 class MessageBox extends React.Component {
     constructor(props) {
@@ -23,10 +25,18 @@ class MessageBox extends React.Component {
 
     onKeyUp(evt) {
         if (evt.keyCode === 13 && trim(evt.target.value) != '') {
+
             evt.preventDefault();
             this.props.sendMessage({text: evt.target.value});
             this.setState({message: ''});
 
+        }
+    }
+    onPressButton(evt) {
+        if ((this.state.message) != '') {
+            evt.preventDefault();
+            this.props.sendMessage({text: this.state.message});
+            this.setState({message: ''});
         }
     }
 
@@ -36,9 +46,23 @@ class MessageBox extends React.Component {
                 <Card style={{
                     maxWidth: 1200,
                     margin: '30px auto',
-                    padding: 30
+                    padding: 30,
+                    clear: 'both'
                 }}>
-                    <TextField fullWidth={true} hintText="Message Field" floatingLabelText="Type your message here" rows={2} value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)}></TextField>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center'
+                    }}>
+                        <TextField style={{
+                            minWidth: '65vw',
+                            maxWidth: '70vw'
+                        }} hintText="Message Field" floatingLabelText="Type your message here" rows={2} value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)}></TextField>
+                        <FloatingActionButton style={{
+                            boxShadow: ''
+                        }} value={this.state.message} onClick={this.onPressButton.bind(this)}>
+                            <ContentAdd/>
+                        </FloatingActionButton>
+                    </div>
                 </Card>
             </MuiThemeProvider>
         );

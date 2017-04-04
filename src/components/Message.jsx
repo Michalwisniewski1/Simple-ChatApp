@@ -22,28 +22,57 @@ class Message extends React.Component {
         if (this.props.userIdInfo === this.props.userId) {
             return (
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                    <List style={{
-                        'maxWidth': '80vw',
-                        wordWrap: 'break-word'
+                    <div style={{
+                        'display': 'flex',
+                        'alignItems': 'flex-start',
+                        'justifyContent': 'flex-start'
                     }}>
-                        <ListItem primaryText={this.props.message} secondaryText={this.props.user} leftAvatar={<Avatar src = {
-                            this.props.photoUrl
-                        } />} rightIcon={<CommunicationChatBubble />}/>
-                    </List>
+                        <List style={{
+                            'minWidth': '60vw',
+                            'maxWidth': '80vw',
+                            'wordWrap': 'break-word'
+                        }}>
+                            <ListItem style={{
+                                display: 'block',
+                                clear: 'both'
+                            }} primaryText={this.props.message} secondaryTextLines={2} secondaryText={< p > <span>
+                                {this.props.user}</span> < br /> {
+                                this.props.date
+                            } < /p>} leftAvatar={< Avatar src = {
+                                this.props.photoUrl
+                            } />}/>
+                        </List>
+                    </div>
                 </MuiThemeProvider>
             );
         } else {
             return (
                 <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-                    <List style={{
-                        'maxWidth': '80vw',
-                        'backgroundColor': '#0097A7',
-                        'wordWrap': 'break-word'
+                    <div style={{
+                        'display': 'flex',
+                        'alignItems': 'flex-end',
+                        'justifyContent': 'flex-end'
                     }}>
-                        <ListItem primaryText={this.props.message} secondaryText={this.props.user} rightAvatar={<Avatar src = {
-                            this.props.photoUrl
-                        } />} leftIcon={<CommunicationChatBubble />}/>
-                    </List>
+                        <List style={{
+                            'minWidth': '60vw',
+                            'maxWidth': '80vw',
+                            'backgroundColor': '#37474F',
+                            'wordWrap': 'break-word'
+                        }}>
+                            <ListItem style={{
+                                display: 'block',
+                                clear: 'both',
+                                float: 'right'
+                            }} primaryText={this.props.message} secondaryTextLines={2} secondaryText={< p style = {{'display': 'block', 'clear': 'both', 'float': 'right'}} > <span style={{
+                                color: 'darkBlack'
+                            }}>
+                                {this.props.user}</span> < br /> {
+                                this.props.date
+                            } < /p>} rightAvatar={< Avatar src = {
+                                this.props.photoUrl
+                            } />}/>
+                        </List>
+                    </div>
                 </MuiThemeProvider>
             )
         }

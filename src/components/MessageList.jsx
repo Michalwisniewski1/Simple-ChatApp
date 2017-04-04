@@ -23,7 +23,7 @@ class MessageList extends React.Component {
         const messageNodes = (this.state.messages).map((message, index) => {
             return (
 
-                <Message message={message.text} user={message.name} userId={message.uid} userIdInfo={this.props.userIdInfo} photoUrl={message.photoUrl} key={index}></Message>
+                <Message message={message.text} date={message.date} user={message.name} userId={message.uid} userIdInfo={this.props.userIdInfo} photoUrl={message.photoUrl} key={index}></Message>
 
             );
         });
@@ -35,9 +35,8 @@ class MessageList extends React.Component {
                         'alignItems': 'center',
                         'justifyContent': 'center',
                         'width': '90vw',
-                        'marginLeft': '0.7vw',
                         'marginLeft': '1.7vw',
-                        'maxWidth' : '1150px'
+                        'maxWidth': '1150px'
                     }}>
                         <List>
                             {messageNodes}

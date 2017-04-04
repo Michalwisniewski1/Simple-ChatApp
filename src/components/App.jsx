@@ -16,6 +16,7 @@ var config = {
     apiKey: "AIzaSyC1k2h6iwLCFv5bEKUDr2U5eecM0FYccBs",
     authDomain: "simple-group-chat.firebaseapp.com",
     databaseURL: "https://simple-group-chat.firebaseio.com",
+    projectId: "simple-group-chat",
     storageBucket: "simple-group-chat.appspot.com",
     messagingSenderId: "775527216452"
 };
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     photoUrl: user.photoURL,
                     uid: user.uid,
                     text: data.text,
-                    date: new Date().toUTCString()
+                    date: new Date().toLocaleString()
                 });
                 this.setState({
                     name: user.displayName,
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     photoUrl: user.photoURL,
                     uid: user.uid,
                     text: data.text,
-                    date: new Date().toUTCString()
+                    date: new Date().toLocaleString()
                 });
 
             }
