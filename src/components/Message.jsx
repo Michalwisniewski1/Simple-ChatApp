@@ -35,10 +35,10 @@ class Message extends React.Component {
                             <ListItem style={{
                                 display: 'block',
                                 clear: 'both'
-                            }} primaryText={this.props.message} secondaryTextLines={2} secondaryText={< p > <span>
-                                {this.props.user}</span> < br /> {
+                            }} primaryText={this.props.message} secondaryTextLines={2} secondaryText={<p> <span>
+                                {this.props.user}</span> <br /> {
                                 this.props.date
-                            } < /p>} leftAvatar={< Avatar src = {
+                            } </p>} leftAvatar={<Avatar src = {
                                 this.props.photoUrl
                             } />}/>
                         </List>
@@ -63,12 +63,12 @@ class Message extends React.Component {
                                 display: 'block',
                                 clear: 'both',
                                 float: 'right'
-                            }} primaryText={this.props.message} secondaryTextLines={2} secondaryText={< p style = {{'display': 'block', 'clear': 'both', 'float': 'right'}} > <span style={{
+                            }} primaryText={this.props.message} secondaryTextLines={2} secondaryText={<p style = {{'display': 'block', 'clear': 'both', 'float': 'right'}} > <span style={{
                                 color: 'darkBlack'
                             }}>
-                                {this.props.user}</span> < br /> {
+                                {this.props.user}</span> <br /> {
                                 this.props.date
-                            } < /p>} rightAvatar={< Avatar src = {
+                            } </p>} rightAvatar={<Avatar src = {
                                 this.props.photoUrl
                             } />}/>
                         </List>
