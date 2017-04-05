@@ -30,7 +30,8 @@ class Message extends React.Component {
                         <List style={{
                             'minWidth': '60vw',
                             'maxWidth': '80vw',
-                            'wordWrap': 'break-word'
+                            'wordWrap': 'break-word',
+                            'marginTop': '3px'
                         }}>
                             <ListItem style={{
                                 display: 'block',
@@ -52,12 +53,15 @@ class Message extends React.Component {
                         'display': 'flex',
                         'alignItems': 'flex-end',
                         'justifyContent': 'flex-end'
+
                     }}>
                         <List style={{
                             'minWidth': '60vw',
                             'maxWidth': '80vw',
                             'backgroundColor': '#37474F',
-                            'wordWrap': 'break-word'
+                            'wordWrap': 'break-word',
+                            'borderRadius': '20px',
+                            'marginTop': '3px'
                         }}>
                             <ListItem style={{
                                 display: 'block',
