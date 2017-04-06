@@ -44420,7 +44420,8 @@ var Message = function (_React$Component) {
                             { style: {
                                     'minWidth': '60vw',
                                     'maxWidth': '80vw',
-                                    'wordWrap': 'break-word'
+                                    'wordWrap': 'break-word',
+                                    'marginTop': '3px'
                                 } },
                             _react2.default.createElement(_ListItem2.default, { style: {
                                     display: 'block',
@@ -44453,6 +44454,7 @@ var Message = function (_React$Component) {
                                 'display': 'flex',
                                 'alignItems': 'flex-end',
                                 'justifyContent': 'flex-end'
+
                             } },
                         _react2.default.createElement(
                             _List2.default,
@@ -44460,7 +44462,9 @@ var Message = function (_React$Component) {
                                     'minWidth': '60vw',
                                     'maxWidth': '80vw',
                                     'backgroundColor': '#37474F',
-                                    'wordWrap': 'break-word'
+                                    'wordWrap': 'break-word',
+                                    'borderRadius': '20px',
+                                    'marginTop': '3px'
                                 } },
                             _react2.default.createElement(_ListItem2.default, { style: {
                                     display: 'block',
