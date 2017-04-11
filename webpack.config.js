@@ -22,7 +22,7 @@ watch: true,
       {
         loader: 'babel-loader',
 
-        // Exclude /node_modules directory
+        // Exclude /node_modules directory.
         exclude: /node_modules/,
 
         // Only run `.js` and `.jsx` files through Babel
