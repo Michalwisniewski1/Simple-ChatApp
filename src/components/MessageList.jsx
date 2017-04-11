@@ -28,15 +28,14 @@ class MessageList extends React.Component {
             );
         });
         return (
-            <div>
+            <div style={{display: 'flex'}}>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Card style={{
-                        'display': 'flex',
                         'alignItems': 'center',
                         'justifyContent': 'center',
                         'width': '90vw',
-                        'marginLeft': '1.7vw',
-                        'maxWidth': '1150px'
+                        'maxWidth': '1150px',
+                        'marginLeft': '30px'
                     }}>
                         <List>
                             {messageNodes}

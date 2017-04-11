@@ -28,14 +28,17 @@ class Message extends React.Component {
                         'justifyContent': 'flex-start'
                     }}>
                         <List style={{
-                            'minWidth': '60vw',
-                            'maxWidth': '80vw',
+                            'minWidth': '20vw',
+                            'maxWidth': '65vw',
                             'wordWrap': 'break-word',
-                            'marginTop': '3px'
+                            'marginTop': '5px',
+                            'marginLeft': '7px'
                         }}>
                             <ListItem style={{
                                 display: 'block',
-                                clear: 'both'
+                                clear: 'both',
+                                backgroundColor:'#006064',
+                                borderRadius: '0px 20px 20px 70px'
                             }} primaryText={this.props.message} secondaryTextLines={2} secondaryText={<p> <span>
                                 {this.props.user}</span> <br /> {
                                 this.props.date
@@ -56,12 +59,13 @@ class Message extends React.Component {
 
                     }}>
                         <List style={{
-                            'minWidth': '60vw',
-                            'maxWidth': '80vw',
-                            'backgroundColor': '#37474F',
+                            'minWidth': '20vw',
+                            'maxWidth': '65vw',
+                            'backgroundColor': '#8BC34A',
                             'wordWrap': 'break-word',
-                            'borderRadius': '20px',
-                            'marginTop': '3px'
+                            'borderRadius': ' 20px 0px 70px 20px',
+                            'marginTop': '5px',
+                            'marginRight': '7px'
                         }}>
                             <ListItem style={{
                                 display: 'block',

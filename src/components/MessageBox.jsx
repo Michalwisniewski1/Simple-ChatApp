@@ -44,24 +44,17 @@ class MessageBox extends React.Component {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                 <Card style={{
-                    maxWidth: 1200,
-                    margin: '30px auto',
+                    margin: '40px 40px',
                     padding: 30,
                     clear: 'both'
                 }}>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center'
-                    }}>
-                        <TextField style={{
-                            minWidth: '65vw',
-                            maxWidth: '70vw'
-                        }} hintText="Message Field" floatingLabelText="Type your message here" rows={2} value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)}></TextField>
-                        <FloatingActionButton style={{
-                            boxShadow: ''
-                        }} value={this.state.message} onClick={this.onPressButton.bind(this)}>
+                      <div style={{display: 'flex'}}>
+                        <FloatingActionButton style={{boxShadow: 0, marginRight: '10px'}} value={this.state.message} onClick={this.onPressButton.bind(this)}>
                             <ContentAdd/>
                         </FloatingActionButton>
+
+                        <TextField style={{}} hintText="Message Field" fullWidth={true} floatingLabelText="Type your message here" rows={2} value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)}></TextField>
+
                     </div>
                 </Card>
             </MuiThemeProvider>

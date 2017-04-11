@@ -11,6 +11,8 @@ import AppBar from 'material-ui/AppBar';
 import * as firebase from 'firebase';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 var config = {
     apiKey: "AIzaSyC1k2h6iwLCFv5bEKUDr2U5eecM0FYccBs",
@@ -94,6 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
             this.setState({login: true})
         }
 
+        handleLogOutButton = () => {
+            this.setState({login: false})
+        }
+
         render() {
 
             if (this.state.login == false) {
@@ -103,7 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return (
                     <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                         <div>
-                            <AppBar title='Simple Chat App' showMenuIconButton={false}>
+                            <AppBar
+                              title='Simple Chat App'
+                              iconElementLeft={<IconButton onClick={this.handleLogOutButton}><NavigationClose /></IconButton>}
+                              >
                                 <Chip backgroundColor={'#303030'} style={{
                                     height: '32px',
                                     marginTop: '15px'
