@@ -6,6 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Card from 'material-ui/Card';
 import List from 'material-ui/List';
+require('../sass/main.scss');
+
 
 class MessageList extends React.Component {
     constructor(props) {
@@ -28,15 +30,9 @@ class MessageList extends React.Component {
             );
         });
         return (
-            <div style={{display: 'flex'}}>
+            <div className='wrapper'>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                    <Card style={{
-                        'alignItems': 'center',
-                        'justifyContent': 'center',
-                        'width': '90vw',
-                        'maxWidth': '1150px',
-                        'marginLeft': '30px'
-                    }}>
+                    <Card className='messageList'>
                         <List>
                             {messageNodes}
                         </List>

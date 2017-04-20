@@ -7,28 +7,35 @@
 }
 
 body {
-    margin: 0;
     background-color: #F9F9F9;
     background: #37474F;
     font-family: 'Roboto', sans-serif;
-
-}
-::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #303030;
 }
 
-::-webkit-scrollbar
-{
-	width: 6px;
-	background-color: #303030;
+.wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0 auto;
 }
 
-::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #0097A7;
+.messageList {
+    width: 80vw;
+    max-width: 1200px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #303030;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #303030;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #0097A7;
 }
