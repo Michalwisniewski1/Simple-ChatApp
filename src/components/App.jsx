@@ -15,14 +15,14 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 var config = {
-    apiKey: "AIzaSyC1k2h6iwLCFv5bEKUDr2U5eecM0FYccBs",
-    authDomain: "simple-group-chat.firebaseapp.com",
-    databaseURL: "https://simple-group-chat.firebaseio.com",
-    projectId: "simple-group-chat",
-    storageBucket: "simple-group-chat.appspot.com",
-    messagingSenderId: "775527216452"
+    apiKey: "insert your code",
+    authDomain: "insert your code",
+    databaseURL: "insert your code",
+    projectId: "insert your code",
+    storageBucket: "insert your code",
+    messagingSenderId: "insert your code"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(config);;
 
 document.addEventListener('DOMContentLoaded', function() {
 
