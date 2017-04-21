@@ -10,7 +10,6 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/communication/chat';
-require('../sass/main.scss');
 
 
 class MessageBox extends React.Component {
@@ -54,7 +53,7 @@ class MessageBox extends React.Component {
                         <FloatingActionButton style={{boxShadow: 0, marginRight: '10px'}} value={this.state.message} onClick={this.onPressButton.bind(this)}>
                             <ContentAdd/>
                         </FloatingActionButton>
-                        <TextField style={{}} hintText="Message Field" fullWidth={true} floatingLabelText="Type your message here" rows={2} value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)}></TextField>
+                        <TextField style={{width: 85vw}} hintText="Message Field" floatingLabelText="Type your message here" rows={2} value={this.state.message} onChange={this.onChange.bind(this)} onKeyUp={this.onKeyUp.bind(this)}></TextField>
                     </div>
                 </Card>
             </MuiThemeProvider>
