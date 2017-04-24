@@ -96,11 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
             this.setState({login: true})
         }
 
-        handleLogOutButton = () => {
-            firebase.auth().signOut().then(function() {
-            this.setState({login: false, name: '', photo: '', messages: [], userId: ''})
+          handleLogOutButton = () => {
+            this.setState({login: false})
         }
-    }
 
         render() {
 
