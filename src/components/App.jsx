@@ -97,8 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         handleLogOutButton = () => {
+            firebase.auth().signOut().then(function() {
             this.setState({login: false})
         }
+    }
 
         render() {
 
