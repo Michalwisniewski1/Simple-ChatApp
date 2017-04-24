@@ -96,8 +96,27 @@ document.addEventListener('DOMContentLoaded', function() {
             this.setState({login: true})
         }
 
-          handleLogOutButton = () => {
-            this.setState({login: false})
+        handleLogOutButton = () => {
+            var auth = firebase.auth();
+
+            firebase.auth().signOut().then(() => {
+                console.log('Signed Out');
+                this.setState({
+                    name: '',
+                    email: '',
+                    key: '',
+                    photo: '',
+                    uid: '',
+                    messages: [],
+                    text: '',
+                    userId: '',
+                    date: new Date().toLocaleString(),
+                    login: false
+                });
+            }),
+            (() => {
+                console.error('Sign Out Error', error);
+            });
         }
 
         render() {
@@ -109,10 +128,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 return (
                     <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                         <div>
-                            <AppBar
-                              title='Simple Chat App'
-                              iconElementLeft={<IconButton onClick={this.handleLogOutButton}><NavigationClose /></IconButton>}
-                              >
+                            <AppBar title='Simple Chat App' iconElementLeft={< IconButton onClick = {
+                                this.handleLogOutButton
+                            } > <NavigationClose/> < /IconButton>}>
                                 <Chip backgroundColor={'#303030'} style={{
                                     height: '32px',
                                     marginTop: '15px'
