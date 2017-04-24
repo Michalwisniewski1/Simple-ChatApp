@@ -38,7 +38,7 @@ class Login extends React.Component {
             this.props.getUserData(name, photo, userId);
             this.props.getDatabase();
             alert('Witaj ' + this.state.name);
-        }).catch(function(error) {
+        }).catch((error) => {
             console.log(error);
             var errorMessage = error.message
             console.log(errorMessage);
