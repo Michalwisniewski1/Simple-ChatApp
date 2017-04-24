@@ -1,5 +1,6 @@
 # My-first-chat-app
 
+Link to github pages with this project: https://michalwisniewski1.github.io/Simple-ChatApp/
 Hello!
 
 
