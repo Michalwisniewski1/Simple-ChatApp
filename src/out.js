@@ -14885,7 +14885,25 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             _this.handleLogOutButton = function () {
-                _this.setState({ login: false });
+                var auth = firebase.auth();
+
+                firebase.auth().signOut().then(function () {
+                    console.log('Signed Out');
+                    _this.setState({
+                        name: '',
+                        email: '',
+                        key: '',
+                        photo: '',
+                        uid: '',
+                        messages: [],
+                        text: '',
+                        userId: '',
+                        date: new Date().toLocaleString(),
+                        login: false
+                    });
+                }), function () {
+                    console.error('Sign Out Error', error);
+                };
             };
 
             _this.state = {
@@ -14918,14 +14936,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             null,
                             _react2.default.createElement(
                                 _AppBar2.default,
-                                {
-                                    title: 'Simple Chat App',
-                                    iconElementLeft: _react2.default.createElement(
+                                { title: 'Simple Chat App', iconElementLeft: _react2.default.createElement(
                                         _IconButton2.default,
                                         { onClick: this.handleLogOutButton },
-                                        _react2.default.createElement(_close2.default, null)
-                                    )
-                                },
+                                        ' ',
+                                        _react2.default.createElement(_close2.default, null),
+                                        ' '
+                                    ) },
                                 _react2.default.createElement(
                                     _Chip2.default,
                                     { backgroundColor: '#303030', style: {
